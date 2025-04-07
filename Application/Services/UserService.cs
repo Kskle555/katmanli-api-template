@@ -17,12 +17,12 @@ public class UserService
     public async Task<List<UserDto>> GetAllUsersAsync()
     {
         var users = await _repo.GetAllAsync();
-        return users.Select(u => new UserDto { Name = u.Name }).ToList();
+        return users.Select(u => new UserDto { Username = u.Username }).ToList();
     }
 
     public async Task AddUserAsync(UserDto dto)
     {
-        var user = new User { Name = dto.Name };
+        var user = new User { Username = dto.Username, Password = "1234" }; // Dummy password
         await _repo.AddAsync(user);
     }
 }
